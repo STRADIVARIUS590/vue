@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1>qwfor</h1> -->
+    <div id="contenedor">
+    
+        <!-- <button @click="check"></buttonç> -->
+
+  <!--           <ol>
+                <li v-for="chamaco in chamacos">
+                    {{chamaco}}
+                </li>
+            </ol> -->
+            <ol>
+                <li v-for="chamaco in chamacos">
+                    {{chamaco.name}} :<span>{{chamaco.role}}</span>
+                </li>
+            </ol>
+
+            
+            <input type="text" v-model="chamaco_role" name="" id="">
+            <br>
+            <input type="text" v-model="chamaco_name" name="" id="">
+
+            <button @click="save"> Click me</button>
+    </div>
+    
+    
+</body>
+<script>
+       const { createApp } = Vue
+
+
+const app =  createApp({
+    data(){
+        return {
+            chamaco_name : '',
+            chamaco_role : '',
+  /*           chamacos : [
+                'iran',
+                'duarte',
+                'buenrostro'
+            ], */
+            chamacos:[
+                {name:'iran', role:'front'},
+                {name:'duarte', role:'backend'},
+                {name:'bienronst', role:'movil'}
+            ]
+        }
+    },
+    methods:{
+       save(){
+        this.chamacos.push({name:this.chamaco_name, role:this.chamaco_role})
+       }
+    }
+}).mount('#contenedor')
+
+
+</script>
+</html>
